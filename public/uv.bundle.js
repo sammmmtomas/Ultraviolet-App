@@ -4,16 +4,6 @@ class Ultraviolet {
     console.log("✅ Ultraviolet ready with config:", config);
   }
 
-  config = {
-    encodeUrl(url) {
-      return this.config.prefix + encodeURIComponent(url);
-    },
-    decodeUrl(encoded) {
-      return decodeURIComponent(encoded.replace(this.config.prefix, ""));
-    }
-  };
+  config = this.config;
 }
-if (typeof self === 'object') {
-  self.Ultraviolet = Ultraviolet;
-  self.__uv = new Ultraviolet(self.__uv$config);
-}
+if (typeof self === 'object') self.Ultraviolet = Ultraviolet;
