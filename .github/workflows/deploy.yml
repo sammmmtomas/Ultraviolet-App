@@ -24,6 +24,7 @@ jobs:
         with:
           project_id: proxy-cloudrun-459416
           install_components: 'beta'
+          region: us-central1
 
       - name: Build and Push Docker image
         run: |
@@ -36,4 +37,7 @@ jobs:
             --region us-central1 \
             --platform managed \
             --allow-unauthenticated \
-            --timeout=300s
+            --timeout=300s \
+            --project=proxy-cloudrun-459416
+          echo "✅ Deployed to:"
+          gcloud run services describe my-cloudrun-service --region us-central1 --format='value(status.url)'
