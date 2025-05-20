@@ -29,8 +29,9 @@ jobs:
       - name: Build and Push Docker image
         run: |
           gcloud builds submit \
-          --quiet \
-          --tag us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service
+          --tag us-central1-docker.pkg.dev/proxy-cloudrun-459416/my-docker-repo/my-cloudrun-service \
+          --no-source --verbosity=info
+          
       
       - name: Deploy to Cloud Run
         run: |
