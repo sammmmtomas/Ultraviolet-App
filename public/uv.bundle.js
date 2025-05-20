@@ -4,6 +4,19 @@ class Ultraviolet {
     console.log("✅ Ultraviolet ready with config:", config);
   }
 
-  config = this.config;
+  url = {
+    encode: (url) => this.config.prefix + encodeURIComponent(url),
+    decode: (str) => decodeURIComponent(str.replace(this.config.prefix, "")),
+  };
 }
-if (typeof self === 'object') self.Ultraviolet = Ultraviolet;
+
+// ✅ Assign ทั้ง class และ instance
+if (typeof self === 'object') {
+  self.Ultraviolet = Ultraviolet;
+
+  // ✅ สร้าง instance ให้พร้อมใช้งาน
+  self.__uv = new Ultraviolet({
+    ...self.__uv$config,
+    window: self,
+  });
+}
